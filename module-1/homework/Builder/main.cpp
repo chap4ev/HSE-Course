@@ -7,7 +7,7 @@ public:
     int wheels = 0;
     int cylinders = 0;
 
-    void ListParts()const{
+    void ListParts(){
         std::cout << "Car parts: ";
         std::cout << "Doors: " << doors << "\n";
         std::cout << "Doors: " << wheels << "\n";
@@ -36,15 +36,15 @@ public:
     }
 
 
-    void AddDoors(int d)const{
+    void AddDoors(int d){
         this->car->doors += d;
     }
 
-    void AddWheels(int w)const{
+    void AddWheels(int w){
         this->car->wheels += w;
     }
 
-    void AddCylinders(int c)const{
+    void AddCylinders(int c){
         this->car->cylinders += c;
     }
 
