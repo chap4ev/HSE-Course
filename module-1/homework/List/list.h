@@ -1,73 +1,69 @@
 #pragma once
 #include <cstddef>
-#include <iostream>
+
 
 namespace task {
 
 class Int_node {
-public:
-	int value;
+ public:
+  int value;
 
-	Int_node* prev;
-	Int_node* next;
+  Int_node* prev;
+  Int_node* next;
 };
 
 
 class list {
 
-public:
+ public:
 
-    list();
-    list(size_t count, const int& value = int());
+  list();
+  list(size_t count, const int& value = int());
 
-    list(const list& other);
+  list(const list& other);
 
-    ~list();
+  ~list();
 
-    list& operator=(const list& other);
-
-
-    int& front();
-    const int& front() const;
-
-    int& back();
-    const int& back() const;
+  list& operator=(const list& other);
 
 
-    bool empty() const;
-    size_t size() const;
-    void clear();
+  int& front();
+  const int& front() const;
+
+  int& back();
+  const int& back() const;
 
 
-    void push_back(const int& value);
-    void pop_back();
-
-    void push_front(const int& value);
-    void pop_front();
+  bool empty() const;
+  size_t size() const;
+  void clear();
 
 
-    void resize(size_t count);
+  void push_back(const int& value);
+  void pop_back();
 
-    void swap(list& other);
+  void push_front(const int& value);
+  void pop_front();
 
-    void remove(const int& value);
 
-    void unique();
+  void resize(size_t count);
 
-    void sort();
+  void swap(list& other);
 
-private:
+  void remove(const int& value);
 
-	Int_node* head;
-	Int_node* tail;
-	
-	size_t length;
+  void unique();
 
-	void unsafe_delete_node(Int_node* node);
+  void sort();
 
-public:
-	
-	void print();
+ private:
+
+  Int_node* head;
+  Int_node* tail;
+  
+  size_t length;
+
+  void unsafe_delete_node(Int_node* node);
 
 }; // class list
 
