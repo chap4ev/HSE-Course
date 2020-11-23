@@ -2,27 +2,22 @@
 
 #include<stdexcept>
 
-task::list::list() : head(nullptr), tail(nullptr), length(0) {}
+task::list::list()
+    : head(nullptr), tail(nullptr), length(0) {}
 
-task::list::list(size_t count, const int& value) {
-  head = nullptr;
-  tail = nullptr;
-  length = 0;
-  
-  for(;count > 0; --count){
+task::list::list(size_t count, const int& value)
+    : head(nullptr), tail(nullptr), length(0) {
+  for (; count > 0; --count) {
     push_back(value);
   }
 }
 
 // copy ctor
-task::list::list(const task::list& other) {
-  head = nullptr;
-  tail = nullptr;
-  length = 0;
+task::list::list(const task::list& other)
+    : head(nullptr), tail(nullptr), length(0) {
+  auto cur_other = other.head;
 
-  auto cur_other = other.head; 
-
-  while(cur_other != nullptr) {
+  while (cur_other != nullptr) {
     push_back(cur_other->value);
     cur_other = cur_other->next;
   }
@@ -69,28 +64,28 @@ task::list& task::list::operator=(const task::list& other) {
 }
 
 int& task::list::front() {
-  if(empty()) {
+  if (empty()) {
     throw std::runtime_error("list::front(): list is empty");
   }
   return head->value;
 }
 
 const int& task::list::front() const {
-  if(empty()) {
+  if (empty()) {
     throw std::runtime_error("list::front(): list is empty");
   }
   return head->value;
 }
 
 int& task::list::back() {
-  if(empty()) {
+  if (empty()) {
     throw std::runtime_error("list::back(): list is empty");
   }
   return tail->value;
 }
 
 const int& task::list::back() const {
-  if(empty()) {
+  if (empty()) {
     throw std::runtime_error("list::back(): list is empty");
   }
   return tail->value;
@@ -121,7 +116,7 @@ void task::list::clear() {
 }
 
 void task::list::push_back(const int& value) {
-  if(empty()) {
+  if (empty()) {
     tail = new task::Int_node{value, nullptr, nullptr};
     head = tail;
     length = 1;
@@ -222,9 +217,9 @@ void task::list::unsafe_delete_node(Int_node* node) {
 }
 
 void task::list::remove(const int& value) {
-  // If the value for delete was set using node from this list,  
-  // then if we delete this node we will no longer heve access 
-  // to this value anymore. So I just copy this value in case 
+  // If the value for delete was set using node from this list,
+  // then if we delete this node we will no longer heve access
+  // to this value anymore. So I just copy this value in case
   // this problem occurs.
   int value_copy = value;
 
@@ -240,7 +235,7 @@ void task::list::remove(const int& value) {
 }
 
 void task::list::unique() {
-  if (empty()) 
+  if (empty())
     return;
 
   auto cur = head->next;
