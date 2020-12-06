@@ -158,10 +158,9 @@ BigInteger& BigInteger::_addAbsoluteValues(const BigInteger& other) {
 
 BigInteger& BigInteger::_minusAbsoluteValue(const BigInteger& other) {
   // substracting abs value of *this by abs value of other
-  // (*this => other)
+  // (*this >= other)
 
   for (int i = 0; i < _digits.size() - 1; ++i) {
-
     if (i < other._digits.size()) {
       _digits[i] -= other._digits[i];
     } else if (_digits[i] >= 0) {
@@ -173,16 +172,11 @@ BigInteger& BigInteger::_minusAbsoluteValue(const BigInteger& other) {
       _digits[i + 1] -= 1;
       _digits[i] += NODE_MOD;
     }
-
   }
 
   // calculate last node
-  if (_digits.size() <= other._digits.size()) {
+  if (_digits.size() == other._digits.size()) {
     _digits.back() -= other._digits.back();
-  }
-  if (_digits.back() < 0) {
-    _digits.back() *= -1;
-    _is_negative ^= true;
   }
 
   _trim_zeros();
