@@ -42,3 +42,6 @@ endif()
 add_executable(biginteger tests.cpp biginteger.h biginteger.cpp)
 target_link_libraries(biginteger gtest_main)
 add_test(NAME biginteger_test COMMAND biginteger)
+
+target_compile_options(biginteger PUBLIC -fsanitize=address,undefined,leak)
+target_link_options(biginteger PUBLIC -fsanitize=address,undefined,leak)
